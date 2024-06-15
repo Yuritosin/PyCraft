@@ -1,0 +1,39 @@
+from numba import njit
+
+import numpy
+import glm
+import math
+
+WIN_RES = glm.vec2(1200, 1200 // 16 * 9)
+
+# Raycasting settings
+RAYCASTING_MAX_LENGTH = 6
+
+# Camera settings
+ASPECT_RATIO = WIN_RES.x / WIN_RES.y
+FOV_DEG = 80
+V_FOV = glm.radians(FOV_DEG)
+H_FOV = 2 * math.atan(math.tan(V_FOV * 0.5) * ASPECT_RATIO)
+NEAR = 0.1
+FAR = 2000.0
+PITCH_MAX = glm.radians(89)
+
+# Chunk settings
+CHUNK_SIZE = 16
+HALF_CHUNK_SIZE = CHUNK_SIZE // 2
+CHUNK_AREA = CHUNK_SIZE * CHUNK_SIZE
+CHUNK_VOLUME = CHUNK_AREA * CHUNK_SIZE
+
+# World settings
+WORLD_W, WORLD_H = 12, 4
+WORLD_D = WORLD_W
+WORLD_AREA = WORLD_W * WORLD_D
+WORLD_VOLUME = WORLD_AREA * WORLD_H
+WORLD_CENTER_XZ = WORLD_W * HALF_CHUNK_SIZE
+WORLD_CENTER_Y = WORLD_H * HALF_CHUNK_SIZE
+
+# Player settings
+PLAYER_SPEED = 0.005
+PLAYER_ROT_SPEED = 0.003
+PLAYER_POS = glm.vec3(WORLD_CENTER_XZ, WORLD_H * CHUNK_SIZE, WORLD_CENTER_XZ)
+MOUSE_SENSITIVITY = 0.002
