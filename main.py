@@ -5,8 +5,8 @@ import pygame as pg
 
 import sys
 
-from shader import Shader
 from scene import Scene
+from shader import Shader
 from player import Player
 
 
@@ -52,10 +52,9 @@ class Engine:
 
         self.dt = self.clock.tick()
         self.time = pg.time.get_ticks() * 0.001
-        # print("Update!")
 
     def render(self):
-        self.ctx.clear(color=(0.1, 0.16, 0.25, 1.0))
+        self.ctx.clear(color=common_settings.BACKGROUND_COLOR)
         self.scene.render()
         pg.display.flip()
 

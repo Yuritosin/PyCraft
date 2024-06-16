@@ -38,7 +38,7 @@ def get_ao(local_pos, world_pos, world_voxels, plane):
 
 
 def pack_data(x, y, z, voxel_id, face_id, ao_id):
-    # 5 + 5 + 8 + 3 + 2 = 10 + 8 + 3 + 2 = 18 + 3 + 2 = 21 + 2 = 23
+    # 5 + 5 + 8 + 3 + 2 = 10 + 8 + 3 + 2 = 18 + 3 + 2 = 21 + 2 = 21
     y_bit, z_bit, voxel_id_bit, face_id_bit, ao_id_bit = 5, 5, 8, 3, 2
 
     packet_data = (
@@ -51,11 +51,6 @@ def pack_data(x, y, z, voxel_id, face_id, ao_id):
     )
 
     return packet_data
-
-
-#@njit
-#def (x, y, z, voxel_id, face_id):
-#    return uint8(x), uint8(y), uint8(z), uint8(voxel_id), uint8(face_id)
 
 
 def get_chunk_index(world_voxel_pos):

@@ -1,5 +1,6 @@
 import glm
 
+from frustum import Frustum
 from settings import common_settings
 
 
@@ -18,6 +19,8 @@ class Camera:
                                       common_settings.NEAR,
                                       common_settings.FAR)
         self.m_view = glm.mat4()
+
+        self.frustum = Frustum(self)
 
     def update(self):
         self.update_vectors()

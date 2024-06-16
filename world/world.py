@@ -7,7 +7,9 @@ class World:
     def __init__(self, engine):
         self.engine = engine
         self.chunks = [None for _ in range(WORLD_VOLUME)]
-        self.voxels = numpy.empty([WORLD_VOLUME, CHUNK_VOLUME], dtype="uint8")
+        self.voxels = numpy.empty([WORLD_VOLUME, CHUNK_VOLUME], dtype="uint32")
+        # I'm literally don't know whats happening but it's line started throw OverflowError
+        #self.voxels = numpy.empty([WORLD_VOLUME, CHUNK_VOLUME], dtype="uint8")
         self.build_chunk()
         self.build_chunk_mesh()
         self.voxel_handler = VoxelHandler(self)

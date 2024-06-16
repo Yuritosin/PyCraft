@@ -1,12 +1,12 @@
-from numba import njit
-
-import numpy
 import glm
 import math
+import numpy
 
 WIN_RES = glm.vec2(1200, 1200 // 16 * 9)
 
-# Raycasting settings
+BACKGROUND_COLOR = glm.vec3(0.1, 0.16, 0.25)
+
+# Ray casting settings
 RAYCASTING_MAX_LENGTH = 6
 
 # Camera settings
@@ -23,14 +23,17 @@ CHUNK_SIZE = 16
 HALF_CHUNK_SIZE = CHUNK_SIZE // 2
 CHUNK_AREA = CHUNK_SIZE * CHUNK_SIZE
 CHUNK_VOLUME = CHUNK_AREA * CHUNK_SIZE
+CHUNK_SPHERE_RADIUS = HALF_CHUNK_SIZE * math.sqrt(3)
 
 # World settings
-WORLD_W, WORLD_H = 12, 4
+WORLD_W, WORLD_H = 20, 4
 WORLD_D = WORLD_W
 WORLD_AREA = WORLD_W * WORLD_D
 WORLD_VOLUME = WORLD_AREA * WORLD_H
 WORLD_CENTER_XZ = WORLD_W * HALF_CHUNK_SIZE
 WORLD_CENTER_Y = WORLD_H * HALF_CHUNK_SIZE
+
+CLOUD_HEIGHT = WORLD_H * CHUNK_SIZE * 2
 
 # Player settings
 PLAYER_SPEED = 0.005
